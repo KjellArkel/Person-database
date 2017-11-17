@@ -1,4 +1,6 @@
 ################ ToDo's #################
+# Improve the gender questions (bug that you can use a random letter)
+# Continu on national function (Prevent that ppl use random letter in the national functions)
 ## @ToDoCreat ToDo function
 
 # Import the required moduls
@@ -58,7 +60,8 @@ def creat_table():
 		gender VARCHAR(1),
 		bbirth int(2),
 		mbirth int(2),
-		ybirth int(2)
+		ybirth int(2),
+		nationality VARCHAR(10)
 	);"""
 
 	try:
@@ -236,3 +239,40 @@ def new_person():
 		else:
 			# exit the loop year of birth
 			break
+
+	# start the nationality loop
+	while True:
+		# ask the user what his/her nationality is
+		print('Please use the Language Codes (3 Letters)')
+		nationality = input('What is your nationality? ').capitalize()
+
+		if nationality == 'Dutch' or nationality == 'Nl' or nationality == 'Ned':
+			# if dutch verify if true
+			print('Dus jij bent een nederland? ')
+			nationality_check = input('Ja of nee? ').lower()
+			if nationality_check == 'j' or nationality_check == 'ja' or nationality_check == 'y' or nationality_check == 'yes':
+				# if dutch break loop
+				print('Lekker hoor')
+				break
+			elif nationality_check == 'n' or nationality_check == 'nee' or nationality_check == 'no' :
+				# if not dutch reset go back to start of the loop
+				print('Try it again!')
+
+		if nationality == 'Finland' or nationality == 'Fin' or nationality == 'Fi':
+			# if finnish verify if true
+			print('Olet siis Suomalainen')
+			nationality_check = input('Kyllä tai ei? ').lower()
+			if nationality_check == 'k' or nationality_check == 'kyllä' or nationality_check == 'y' or nationality_check == 'yes':
+				# if finnish break loop
+				print("Kiva vaikka")
+				break
+			elif nationality_check == 'e' or nationality_check == 'ei' or nationality_check == 'n' or nationality_check == 'no':
+				# if not Finnish reset go back to start of the loop
+				print("Try it again")
+
+
+
+				
+			
+
+
