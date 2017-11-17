@@ -1,8 +1,6 @@
 ################ ToDo's #################
-# @ToDo Add comments to the code in functions.py
 # @ToDo Add clear statments in code (functions)
 ## @ToDoCreat ToDo function
-
 
 # Import the required moduls
 import mysql.connector
@@ -73,102 +71,143 @@ def creat_table():
 def new_person():
 	# ask the user his/her first name
 	firstname = input("What is the firstname? ").capitalize()
-	
-	check_mid_name = True
-	while check_mid_name:
+
+	# start the middle name loop
+	while True:
+		# ask the user if they have a middle name
 		have_middlename = input("Does this person have a middle name? ").lower()
 		if have_middlename == 'yes' or have_middlename == 'y' or have_middlename == 'ja' or have_middlename == 'j':
+			# if they have ask them what it is
 			midname = input("What is the person middle name? ").lower()
-			check_mid_name = False
+			break
 		elif have_middlename == 'no' or have_middlename == 'n' or have_middlename == 'nee':
-			check_mid_name = False
+			# if not exit loop
+			break
 		else:
+			# if not true or false repeat the question
 			print('That is not a legit anwser. Try it again.')
 
+	# ask for last name
 	lastname = input("What is the lastname? ").capitalize()
 	
+	# clear the screen
 	clear_screen()
 
-	loop_phonenumber = True
-
-	while loop_phonenumber:
+	# start the phonenumber loop
+	while True:
+		# ask the user for a phone number
 		phonenumber = input("What is the phonenumber? ")
+		# check if the phone number is only numbers
 		check_phonenumber = phonenumber.isdigit()
+
 		if check_phonenumber is False:
+			# if phone number has signs or characters
 			print('That is not legit. Try it again.')
 		else:
-			loop_phonenumber = False
+			# if not exit loop phone number
+			break
 
+	# print he available options
 	print("If you are a male type 'm'")
 	print("If you are a female type 'f'")
 
+	# start gender loop
 	while True:
+		# ask the user what his/ her gender is
 		gender = input("What is your gender? ")
 		if gender == 'gn':
+			# if gender neutral print this
 			print('LOL')
 			break
 		elif len(gender) >= 2:
+			# if gender var is 2 or longer print this
 			print('You didnt read the discription. Will go faster if you do!')
 		else:
+			# exit gender loop
 			break
 
+	# give the user the requirements for the next 3 questions
 	print('For the next three questions use numbers.')
+	print('Not more or less than 2')
+
+	# start the birthday loop
 	while True:
+		# ask the user the birthday and check if only numbers are used
 		birthday = input('What is your day of birth? ')
 		check_birthday = birthday.isdigit()
 		if check_birthday is False:
+			# if characters or signs are used print this message
 			clear_screen()
 			print('That is not a number!')
 		elif len(birthday) >= 3:
 			clear_screen()
+			# if more than 2 numbers used this message will be print
 			print("Your use more than 2 numbers.")
 			print("Please use 2 numbers.")
 		elif len(birthday) <= 1:
 			clear_screen()
+			# if less than 2 numbers used this message will be print
 			print("You used less than 2 numbers.")
 			print("Please use 2 numbers.")
 		elif int(birthday) >= 31 or int(birthday) <= 0:
+			# if the number is higher than 31 or lower than 0 this message will be printed
 			clear_screen()
 			print("Every month has 30 or 31 days not " + birthday + " days")
 		else:
+			# exits the loop birthday
 			break
 
+	# start the month of birth loop
 	while True:
+		# ask the user what the month of birth is and check if they are numbers
 		month_of_birth = input('What is the month you were born in? ')
 		check_month_of_birth = month_of_birth.isdigit()
 		if check_month_of_birth is False:
+			# if the user didnt use all numbers
 			clear_screen()
 			print('That is not a number!')
 		elif len(month_of_birth) >= 3:
+			# if the number is more then 3 digits
 			clear_screen()
 			print("Your use more than 2 numbers.")
 			print("Please use 2 numbers.")
 		elif len(month_of_birth) <= 1:
+			# if the number is less then 3 digits
 			clear_screen()
 			print("You used less than 2 numbers.")
 			print("Please use 2 numbers.")
 		elif int(month_of_birth) >= 31 or int(month_of_birth) <= 0:
+			# if the user used a number that is higher than 31 or less than 0
 			clear_screen()
 			print("Every year has 12 months not " + month_of_birth + " months")
 		else:
+			# exit the loop month of birth
 			break
 
+	# start the year of birth loop
 	while True:
+		# ask the user what the year of birth is and if the are numbers
 		year_of_birth = input('What is the year you were born in? (4 numbers)')
 		check_year_of_birth = year_of_birth.isdigit()
+		# get the current year
 		now = datetime.datetime.now()
 		if check_year_of_birth is False:
+			# check if all the input is number
 			clear_screen()
 			print('That is not a number')
 		elif len(year_of_birth) >= 5:
+			# check if the lenght is higher than 4
 			clear_screen()
 			print('You used more than 4 numbers.')
 			print('Please use 4 numbers')
 		elif len(year_of_birth) <= 3:
+			# check if the lenght is less than 4
 			clear_screen()
 			print('You used less than 4 numbers.')
 			print('Please use 4 nubmers')
 		elif int(year_of_birth) > now.year:
+			# check if the year is not above the current year
 			print('We are not in that year jet')
 		else:
+			# exit the loop year of birth
 			break
