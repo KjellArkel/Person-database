@@ -1,5 +1,4 @@
 ################ ToDo's #################
-# @ToDo Add clear statments in code (functions)
 ## @ToDoCreat ToDo function
 
 # Import the required moduls
@@ -15,11 +14,15 @@ def clear_screen():
 	# os.system('clear')
 
 def show_help():
+	# clear the screen
+	clear_screen()
+
 	# Prints out the commands that the user can use
 	print("Enter 'DONE' if you are finished")
 	print("Enter 'HELP' for help")
 	print("Enter 'NDB' for a new database")
 	print("Enter 'NEW' for adding a new person")
+	print("")
 
 def login():
 	# open database connection
@@ -38,6 +41,9 @@ def creat_table():
 	# login to the server
 	db = login()
 	cursor = db.cursor()
+
+	# clear the screen
+	clear_screen()
 
 	# ask the user what the name of the table
 	name_new_table = input("What is the name of the new table? > ").lower()
@@ -69,14 +75,19 @@ def creat_table():
 	db.close()
 
 def new_person():
+	clear_screen()
+
 	# ask the user his/her first name
 	firstname = input("What is the firstname? ").capitalize()
+
+	clear_screen()
 
 	# start the middle name loop
 	while True:
 		# ask the user if they have a middle name
 		have_middlename = input("Does this person have a middle name? ").lower()
 		if have_middlename == 'yes' or have_middlename == 'y' or have_middlename == 'ja' or have_middlename == 'j':
+			clear_screen()
 			# if they have ask them what it is
 			midname = input("What is the person middle name? ").lower()
 			break
@@ -86,6 +97,8 @@ def new_person():
 		else:
 			# if not true or false repeat the question
 			print('That is not a legit anwser. Try it again.')
+
+	clear_screen()
 
 	# ask for last name
 	lastname = input("What is the lastname? ").capitalize()
@@ -103,9 +116,15 @@ def new_person():
 		if check_phonenumber is False:
 			# if phone number has signs or characters
 			print('That is not legit. Try it again.')
+		elif len(phonenumber) >= 8:
+			print('You used to much digits.')
+		elif len(phonenumber) <= 6: 
+			print('You didnt use enough number.')
 		else:
 			# if not exit loop phone number
 			break
+
+	clear_screen()
 
 	# print he available options
 	print("If you are a male type 'm'")
@@ -125,6 +144,8 @@ def new_person():
 		else:
 			# exit gender loop
 			break
+
+	clear_screen()
 
 	# give the user the requirements for the next 3 questions
 	print('For the next three questions use numbers.')
@@ -157,6 +178,8 @@ def new_person():
 			# exits the loop birthday
 			break
 
+	clear_screen()
+
 	# start the month of birth loop
 	while True:
 		# ask the user what the month of birth is and check if they are numbers
@@ -183,6 +206,8 @@ def new_person():
 		else:
 			# exit the loop month of birth
 			break
+
+	clear_screen()
 
 	# start the year of birth loop
 	while True:
